@@ -1,12 +1,39 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'NAME', defaultValue: 'World', description: "Who should I say hello to?")
-    }
     stages {
-        stage('Hello') {
+        stage('build') {
             steps {
-                echo "Hello ${params.NAME}!"
+                echo "Bulding sample-book-app..."
+            }
+        }
+        stage('deply-dev') {
+            steps {
+                echo "Deploying to dev env..."
+            }
+        }
+        stage('test-dev') {
+            steps {
+                echo "Testing sample-book-app on dev env..."
+            }
+        }
+        stage('deploy-stg') {
+            steps {
+                echo "Deploying to stg env..."
+            }
+        }
+        stage('test-stg') {
+            steps {
+                echo "Testing sample-book-app on stg env..."
+            }
+        }
+        stage('deploy-prd') {
+            steps {
+                echo "Deploying to dev env..."
+            }
+        }
+        stage('test-prd') {
+            steps {
+                echo "Testing sample-book-app on stg env..."
             }
         }
     }
