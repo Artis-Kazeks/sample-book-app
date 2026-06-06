@@ -9,15 +9,15 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - name: Print process name
-        run: echo "Building sample-book-app..."
+      - uses: ./.github/actions/build
   deploy-dev:
     runs-on: self-hosted
     needs: [build]
     steps:
       - uses: actions/checkout@v4
-      - name: Print process name
-        run: echo "Deployment to DEV env..."
+      - uses: ./.github/actions/build
+        with:
+          environment: 'dev'
   test-dev:
     runs-on: self-hosted
     needs: [deploy-dev]
@@ -30,8 +30,9 @@ jobs:
     needs: [test-dev]
     steps:
       - uses: actions/checkout@v4
-      - name: Print process name
-        run: echo "Deployment to STG env..."
+      - uses: ./.github/actions/build
+        with:
+          environment: 'stg'
   test-stg:
     runs-on: self-hosted
     needs: [deploy-stg]
@@ -44,8 +45,9 @@ jobs:
     needs: [test-stg]
     steps:
       - uses: actions/checkout@v4
-      - name: Print process name
-        run: echo "Deployment to PRD env..."
+      - uses: ./.github/actions/build
+        with:
+          environment: 'prd'
   test-prd:
     runs-on: self-hosted
     needs: [deploy-prd]
