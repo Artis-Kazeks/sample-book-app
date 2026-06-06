@@ -76,4 +76,11 @@ def deploy(String env){
 
 def test(String env){
     echo "Testing sample-book-app on ${env} env..."
+
+    sh "docker pull artisktdl/api-tests"
+    
+    def dir = pwd()
+    sh "docker run --rm --network sample-book-app-compose-network -v '${dir}'/test-reports:/api-tests/mochawesome-report artisktdl/api-tests BOOKS BOOKS_${env}"
+
+    echo "Tests for sample-book-app on ${env} env finished."
 }
