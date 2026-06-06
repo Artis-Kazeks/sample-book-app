@@ -6,7 +6,7 @@ services:
     ports:
       - 1010:1050
     networks:
-      - sample-book-app-compose-network
+      - sample-book-app-compose-netw
   sample-book-app-stg:
     build: .
     image: artisktdl/sample-book-app
@@ -14,7 +14,7 @@ services:
     ports:
       - 2020:1050
     networks:
-      - sample-book-app-compose-network
+      - sample-book-app-compose-net
   sample-book-app-prd:
     build: .
     image: artisktdl/sample-book-app
@@ -22,8 +22,8 @@ services:
     ports:
       - 3030:1050
     networks:
-      - sample-book-app-compose-network
+      - sample-book-app-compose-net
 
 networks:
   sample-book-app-compose-network:
-    name: sample-book-app-compose-network
+    name: sample-book-app-compose-net
