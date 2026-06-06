@@ -55,6 +55,7 @@ pipeline {
 
 def build(){
     echo "Building sample-book-app..."
+    sh "ls -a"
 }
 
 def deploy(String env){
