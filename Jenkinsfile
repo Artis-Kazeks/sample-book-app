@@ -80,7 +80,9 @@ def test(String env){
     sh "docker pull artisktdl/api-tests"
     
     def dir = pwd()
-    sh "docker run --rm --network sample-book-app-compose-network -v '${dir}'/test-reports:/api-tests/mochawesome-report artisktdl/api-tests run BOOKS BOOKS_${env}"
+    sh "docker run --rm --network sample-book-app-compose-net -v '${dir}'/test-reports:/api-tests/mochawesome-report artisktdl/api-tests run BOOKS BOOKS_${env}"
+
+    archiveArtifacts allowEmptyArchive: true, artifacts: '/test-reports/mochawesome.json, /test-reports/mochawesome.html, /test-reports/assets', followSymlinks: false
 
     echo "Tests for sample-book-app on ${env} env finished."
 }
