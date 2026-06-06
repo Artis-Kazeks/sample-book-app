@@ -6,7 +6,7 @@ services:
     ports:
       - 1010:1050
     networks:
-      - sample-book-app-compose-netw
+      - sample-book-app-compose-net
   sample-book-app-stg:
     build: .
     image: artisktdl/sample-book-app
