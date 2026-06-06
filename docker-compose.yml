@@ -25,5 +25,5 @@ services:
       - sample-book-app-compose-net
 
 networks:
-  sample-book-app-compose-network:
+  sample-book-app-compose-net:
     name: sample-book-app-compose-net
